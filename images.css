@@ -1,0 +1,231 @@
+
+.imgGroup{
+	/*background-color:rgba(1,75,66,0.2);*/
+	border-radius:3px;
+	margin-bottom: 15px;
+	max-width:100%;
+	/*border: 1px solid rgba(1,75,66,0.3);*/
+	}
+	.imgGroup h3{
+		margin:0;
+	}	
+
+.imageDaku{
+	border-radius: 3px;
+	max-width: 100%;
+	margin: 0 auto;
+	}
+	.imageDaku img{
+		/*border: 8px solid #d2bd86;*/
+		display: block;
+		margin: 0 auto;
+		max-width:100%;
+		padding-top:0;
+	}
+
+.imgGagmay{
+	margin: 0 auto;
+	max-width: 100%;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	}
+	.imgGagmay img{
+		cursor: pointer;
+	}
+
+	.imgGagmay div{
+		display: inline-block;
+		margin: 0 auto;
+		max-width: 19%;
+		margin-top:3px;
+	}
+
+.popClickToDaku{
+	float: right;
+	position: relative;
+	margin-right: 5px;
+	margin-top: -65px;
+	z-index: 100;
+}
+.leoImagesGamay{
+	margin: 0 auto;
+	max-width: 100%;
+	text-align: center;
+}
+
+.imgSocial{
+	padding: 5px 5px;
+	/*background-color: #fff;*/
+}
+
+.imgSocial a.ui-btn{
+	border:0;
+	background-color:transparent;
+}
+
+.pop700px{
+	max-width:700px;
+	text-align:left;
+}
+
+.btnsx{
+	display: inline-block;
+	margin: 0;
+}
+
+a.btnsx.ui-btn{
+	background: transparent;
+	border: none;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-radius: 2px;
+	}
+	a.btnsx.ui-btn:hover{
+		background-color:transparent;
+	}
+
+.sendDetalye{
+	background-color: rgb(255,255,204);
+	margin: 8px;
+	display: none;
+	}
+	.sendDetalye .ui-input-text,
+	.sendDetalye .ui-input-textarea{
+		padding-top:1px;
+		padding-bottom:1px;
+		margin-top:1px;
+		margin-bottom:5px;
+	}
+
+	.sendDetalye label{
+		text-align:right;
+		margin-right:10px;
+	}
+	.sendDetalye a{
+		text-align: right;
+	}
+
+#hotelvideos .videoDiv{
+	margin: 0 auto;
+	max-width: 80%;
+	height:400px;
+	margin-bottom:15px;
+}
+
+
+#pbayimages{
+	margin: 0 auto;
+	max-width: 600px; /* with of treats pic width;*/
+}
+
+#hotelvideos{
+	margin: 0 auto;
+	max-width: 800px; /* with of treats pic width;*/
+}	
+
+#hotelbeauties{
+	max-width: 100%;
+	max-height:100%;
+	margin: 0 auto;
+	/*max-width: 950px;*/
+	}
+#pbayimages .ui-collapsible{
+	border-radius:3px;
+	padding: 2px 0;
+	margin-bottom: 0;
+	text-shadow:none;
+	}
+	#pbayimages .ui-collapsible a.ui-btn{
+		background-color:teal;
+		border-bottom:none;
+		border-style:none;
+		color:#fff;
+		text-shadow:none;
+	}
+	#pbayimages .ui-collapsible-heading{
+		border: 1px solid teal;
+	}
+	#pbayimages .ui-collapsible-content{
+		background: transparent;
+		padding: 0;
+		/*border: 1px solid teal*/
+		border: none;
+	}
+
+#hotelbeauties .ui-collapsible,
+#hotelmap .ui-collapsible{
+	border-radius:3px;
+	padding: 2px 0;
+	margin-bottom: 0;
+	text-shadow:none;
+	}
+	#hotelbeauties .ui-collapsible a.ui-btn,
+	#hotelmap .ui-collapsible a.ui-btn{
+		background-color:teal;
+		border:none;
+		color:#fff;
+		text-shadow:none;
+	}
+	#hotelbeauties .ui-collapsible-heading,
+	#hotelmap .ui-collapsible-heading{
+		border: 1px solid teal;
+	}
+	#hotelbeauties .ui-collapsible-content,
+	#hotelmap .ui-collapsible-content{
+		background: transparent;
+		padding: 0;
+		/*border: 1px solid teal*/
+	}
+.actionPbayPics,
+.action2017,
+.action2016,
+.action2015,
+.action2014{
+	background: url(pbayImages/gauze.png) #ececec;
+	padding-top: 3px;
+	padding-bottom: 0;
+}
+
+#h3Cal2017 .action2017 a.ui-btn,
+#h3Cal2016 .action2016 a.ui-btn,	
+#h3Cal2015 .action2015 a.ui-btn,
+#h3Cal2014 .action2014 a.ui-btn{
+	color: teal;
+	background-color: transparent;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border: none;
+	font-size:14px;
+	}
+	#h3Cal2017 .action2017 a.ui-btn:hover,
+	#h3Cal2016 .action2016 a.ui-btn:hover,
+	#h3Cal2014 .action2014 a.ui-btn:hover{
+		background-color: #58FAAC;
+		color: rgb(1,75,66);
+	}
+	#h3Cal2017 .action2017 a.ui-btn-icon-right:after,
+	#h3Cal2016 .action2016 a.ui-btn-icon-right:after,
+	#h3Cal2015 .action2015 a.ui-btn-icon-right:after,
+	#h3Cal2014 .action2014 a.ui-btn-icon-right:after{
+		background-color: teal;
+	}
+	
+#pbayimages .actionPbayPics a.ui-btn{
+	color: teal;
+	background-color: transparent;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border: none;
+	font-size:14px;
+	}
+	#pbayimages .actionPbayPics a.ui-btn:hover{
+		background-color: #58FAAC;
+		color: rgb(1,75,66);
+		text-shadow: none;
+	}
+	#pbayimages .actionPbayPics a.ui-btn-icon-right:after {
+		background-color: teal;
+	}
+	
+/* end photo gallery */
