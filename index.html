@@ -16,50 +16,52 @@
 	<link rel="stylesheet" href="./slider.css">	
 	<link rel="stylesheet" href="./ap-fullscreen-modal.min.css">	
 	<script type="text/javascript" src="./imgUrl.js"></script>
-	<script type="text/javascript" src="./images.js"></script>
+	<!-- <script type="text/javascript" src="./images.js"></script> -->
 	<script type="text/javascript" src="./jqCycle2.js"></script>
 	<script type="text/javascript" src="./c2center.min.js"></script>
 	<script type="text/javascript" src="./ap-fullscreen-modal.min.js"></script>
+	<script type="text/javascript" src="./images.js"></script>
 
 	<!-- TODO add manifest here -->
 
 </head>
 <body>
 <div data-role="page" id="images" style="background-color: #fff;">
-    <div data-role="content">	
+  <div data-role="content">	
+  	<div class="putos">
 			<div class="angUlo">
 				<img name="" data-caption="" src="./pbaylogo.png" />
 			</div>
+
 			<div class="sudlanan">
 				<figure>
 					<a id="open-rooms">
 						<img name="" data-caption="" src="./pbayImages/Pictures/rooms/LagoonSideRoom.jpg" />
 					</a>
 					<figcaption>Rooms</figcaption>
-			<div style="display: none;">
-			  <div id="roomsImages" class="modal-content">
-					<section class="sliderBox">
-						<div class="imageBox">
-							<img data-name="FAMILY ROOM" data-description="A favorite for bonding time with a large family." src="./pbayImages/Pictures/rooms/FamilyRoom.jpg" />
-						</div>
-					</section>
-  				<div class="imgDescription">
-  					<div class="slideControls">
-							<button class="btnPrevious"><<</button>
-  						<button class="playPause">||</button>
-  						<button class="btnNext">>></button>
-  						<button class="btnCaption">Caption</button>
-  					</div>
-  					<div class="slideCaption">
-  						<div class="descriptionText">
-	  						<h2>FAMILY ROOM</h2>
-				    		<p>A favorite for bonding time with a large family.</p>
-  						</div>
-  					</div>
-			    </div>
-			  </div>
-			</div>
-
+		 			<!-- <div style="display: none;">
+					  <div id="roomsImages" class="modal-content">
+							<section class="sliderBox">
+								<div class="imageBox">
+									<img data-name="FAMILY ROOM" data-description="A favorite for bonding time with a large family." src="./pbayImages/Pictures/rooms/FamilyRoom.jpg" />
+								</div>
+							</section>
+		  				<div class="imgDescription">
+		  					<div class="slideControls">
+									<button class="btnPrevious"><<</button>
+		  						<button class="playPause">||</button>
+		  						<button class="btnNext">>></button>
+		  						<button class="btnCaption">Caption</button>
+		  					</div>
+		  					<div class="slideCaption">
+		  						<div class="descriptionText">
+			  						<h2>FAMILY ROOM</h2>
+						    		<p>A favorite for bonding time with a large family.</p>
+		  						</div>
+		  					</div>
+					    </div>
+					  </div>
+					</div> -->
 				</figure>
 				<figure>
 					<a id="open-restaurants">
@@ -93,81 +95,153 @@
 				</figure>
 			</div>	
 
-<!-- 			<div style="display: none;">
-			  <div id="roomsImages" class="modal-content">
+		</div>
+
+		<div style="display: none;">
+		  <div id="roomsImages" class="modal-content">
+				<section class="sliderBox">
+					<div class="imageBox">
+						<img data-name="FAMILY ROOM" data-description="A favorite for bonding time with a large family." src="./pbayImages/Pictures/rooms/FamilyRoom.jpg" />
+					</div>
+				</section>
+				<div class="imgDescription">
+					<div class="slideControls">
+						<button class="btnPrevious"><<</button>
+						<button class="playPause">||</button>
+						<button class="btnNext">>></button>
+						<button class="btnCaption">Caption</button>
+					</div>
+					<div class="slideCaption">
+						<div class="descriptionText">
+  						<h2>FAMILY ROOM</h2>
+			    		<p>A favorite for bonding time with a large family.</p>
+						</div>
+					</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div style="display: none;">
+		  <div id="restaurantsImages" class="modal-content">
 					<section class="sliderBox">
 						<div class="imageBox">
-							<img data-name="FAMILY ROOM" data-description="A favorite for bonding time with a large family." src="./pbayImages/Pictures/rooms/FamilyRoom.jpg" />
+							<img name="" data-caption="" src="./pbayImages/Pictures/restaurants/AlienAbduction.jpg" />
 						</div>
 					</section>
-  				<div class="imgDescription">
-  					<div class="slideControls">
+					<div class="imgDescription">
+						<div class="slideControls">
 							<button class="btnPrevious"><<</button>
-  						<button class="playPause">||</button>
-  						<button class="btnNext">>></button>
-  						<button class="btnCaption">Caption</button>
-  					</div>
-  					<div class="slideCaption">
-  						<div class="descriptionText">
-	  						<h2>FAMILY ROOM</h2>
-				    		<p>A favorite for bonding time with a large family.</p>
-  						</div>
-  					</div>
-			    </div>
-			  </div>
-			</div>
- -->
-			<div style="display: none;">
-			  <div id="restaurantsImages" class="modal-content">
-						<section class="sliderBox">
-							<div class="imageBox">
-								<img name="" data-caption="" src="./pbayImages/Pictures/restaurants/AlienAbduction.jpg" />
+							<button class="playPause">||</button>
+							<button class="btnNext">>></button>
+							<button class="btnCaption">Caption</button>
+						</div>
+						<div class="slideCaption">
+							<div class="descriptionText">
+	  						<h2>name</h2>
+				    		<p>description</p>
 							</div>
-						</section>
-			  </div>
-			</div>
-
-			<div style="display: none;">
-			  <div id="landscapesImages" class="modal-content">
-					<section class="sliderBox">
-						<div class="imageBox">
-							<img name="" data-caption="" src="./pbayImages/Pictures/landscape/AerialView.jpg" />
 						</div>
-					</section>
-			  </div>
-			</div>
+			    </div>
+		  </div>
+		</div>
 
-			<div style="display: none;">
-			  <div id="activitiesImages" class="modal-content">
-					<section class="sliderBox">
-						<div class="imageBox">
-							<img name="" data-caption="" src="./pbayImages/Pictures/activities/Archery.jpg" />
+		<div style="display: none;">
+		  <div id="landscapesImages" class="modal-content">
+				<section class="sliderBox">
+					<div class="imageBox">
+						<img name="" data-caption="" src="./pbayImages/Pictures/landscape/AerialView.jpg" />
+					</div>
+				</section>
+				<div class="imgDescription">
+					<div class="slideControls">
+						<button class="btnPrevious"><<</button>
+						<button class="playPause">||</button>
+						<button class="btnNext">>></button>
+						<button class="btnCaption">Caption</button>
+					</div>
+					<div class="slideCaption">
+						<div class="descriptionText">
+  						<h2>name</h2>
+			    		<p>description</p>
 						</div>
-					</section>
-			  </div>
-			</div>
+					</div>
+		    </div>
+		  </div>
+		</div>
 
-			<div style="display: none;">
-			  <div id="mogambospringsImages" class="modal-content">
-					<section class="sliderBox">
-						<div class="imageBox">
-							<img name="" data-caption="" src="./pbayImages/Pictures/mogambosprings/MogamboSprings1.jpg" />
+		<div style="display: none;">
+		  <div id="activitiesImages" class="modal-content">
+				<section class="sliderBox">
+					<div class="imageBox">
+						<img name="" data-caption="" src="./pbayImages/Pictures/activities/Archery.jpg" />
+					</div>
+				</section>
+				<div class="imgDescription">
+					<div class="slideControls">
+						<button class="btnPrevious"><<</button>
+						<button class="playPause">||</button>
+						<button class="btnNext">>></button>
+						<button class="btnCaption">Caption</button>
+					</div>
+					<div class="slideCaption">
+						<div class="descriptionText">
+  						<h2>name</h2>
+			    		<p>description</p>
 						</div>
-					</section>
-			  </div>
-			</div>
+					</div>
+		    </div>
+		  </div>
+		</div>
 
-			<div style="display: none;">
-			  <div id="weddingsImages" class="modal-content">
-					<section class="sliderBox">
-						<div class="imageBox">
-							<img name="" data-caption="" src="./pbayImages/Pictures/weddings/1.jpg" />
+		<div style="display: none;">
+		  <div id="mogambospringsImages" class="modal-content">
+				<section class="sliderBox">
+					<div class="imageBox">
+						<img name="" data-caption="" src="./pbayImages/Pictures/mogambosprings/MogamboSprings1.jpg" />
+					</div>
+				</section>
+				<div class="imgDescription">
+					<div class="slideControls">
+						<button class="btnPrevious"><<</button>
+						<button class="playPause">||</button>
+						<button class="btnNext">>></button>
+						<button class="btnCaption">Caption</button>
+					</div>
+					<div class="slideCaption">
+						<div class="descriptionText">
+  						<h2>name</h2>
+			    		<p>description</p>
 						</div>
-					</section>
-			  </div>
-			</div>
+					</div>
+		    </div>
+		  </div>
+		</div>
 
-    </div>
+		<div style="display: none;">
+		  <div id="weddingsImages" class="modal-content">
+				<section class="sliderBox">
+					<div class="imageBox">
+						<img name="" data-caption="" src="./pbayImages/Pictures/weddings/1.jpg" />
+					</div>
+				</section>
+				<div class="imgDescription">
+					<div class="slideControls">
+						<button class="btnPrevious"><<</button>
+						<button class="playPause">||</button>
+						<button class="btnNext">>></button>
+						<button class="btnCaption">Caption</button>
+					</div>
+					<div class="slideCaption">
+						<div class="descriptionText">
+  						<h2>name</h2>
+			    		<p>description</p>
+						</div>
+					</div>
+		    </div>
+		  </div>
+		</div>
+
+  </div>
 </div>
 <!-- <script type="text/javascript" src="./rlmjHelpers.js"></script> -->
   <script src="./app-leox.js" async></script>

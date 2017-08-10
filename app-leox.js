@@ -334,12 +334,12 @@ console.log("app-leox started");
 //   }
 
   // TODO add service worker code here
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-             .register('./sw-leox.js')
-             .then(function() { console.log('Service Worker Registered'); }, function() {
-                console.log("Service worker NOT regisgered");
-             });
-  }
+  // if ('serviceWorker' in navigator) {
+  //   navigator.serviceWorker
+  //            .register('./sw-leox.js')
+  //            .then(function() { console.log('Service Worker Registered'); }, function() {
+  //               console.log("Service worker NOT regisgered");
+  //            });
+  // }
 
 })();

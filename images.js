@@ -1,293 +1,152 @@
 $( document ).on( "pagecreate", "#images", function () {
 
-   var $roomsImages = $("#roomsImages .imageBox"),
-      $slidingrooms = $( "#roomsImages .sliderBox" ).find("img"),
-      // $roomsList = $("#roomsList").find("a"),
-      roomsImagesURL = [],
-      allRoomsCount = $slidingrooms.length,
-      roomsisFirstLoad,
+   var $rooms = $("#roomsImages"), 
+       $roomsImages = $rooms.find(".imageBox"),
+       $slidingrooms = $( "#roomsImages .sliderBox" ).find("img"),
 
-			$restaurantsImages = $("#restaurantsImages .imageBox"),
+      $restaurants = $("#restaurantsImages"),
+      $restaurantsImages = $restaurants.find(".imageBox"),
       $slidingrestaurants = $( "#restaurantsImages .sliderBox" ).find("img"),
-      // $restaurantsList = $("#restaurantsList").find("a"),
-      restaurantsImagesURL = [],
-      allRestaurantsCount = $slidingrestaurants.length,
-      restaurantsisFirstLoad,
 
-      $landscapesImages = $("#landscapesImages .imageBox"),
+      $landscapes = $("#landscapesImages"),
+      $landscapesImages = $landscapes.find(".imageBox"),
       $slidinglandscapes = $( "#landscapesImages .sliderBox" ).find("img"),
-      // $landscapeList = $("#landscapeList").find("a"),
-      landscapesImagesURL = [],
-      allLandscapesCount = $slidinglandscapes.length,
-      landscapeisFirstLoad,
 
-      $activitiesImages = $("#activitiesImages .imageBox"),
+      $activities = $("#activitiesImages"),
+      $activitiesImages = $activities.find(".imageBox"),
       $slidingactivities = $( "#activitiesImages .sliderBox" ).find("img"),
-      // $activitieList = $("#activitieList").find("a"),
-      activitiesImagesURL = [],
-      allActivitiesCount = $slidingactivities.length,
-      activitieisFirstLoad,
 
-      $mogambospringsImages = $("#mogambospringsImages .imageBox"),
+      $mogambosprings = $("#mogambospringsImages"),
+      $mogambospringsImages = $mogambosprings.find(".imageBox"),
       $slidingmogambosprings = $( "#mogambospringsImages .sliderBox" ).find("img"),
-      // $mogambospringList = $("#mogambospringList").find("a"),
-      mogambospringsImagesURL = [],
-      allMogambospringsCount = $slidingmogambosprings.length,
-      mogambospringisFirstLoad,
 
-      $weddingsImages = $("#weddingsImages .imageBox"),
-      $slidingweddings = $( "#weddingsImages .sliderBox" ).find("img"),
-      // $weddingList = $("#weddingList").find("a"),
-      weddingsImagesURL = [],
-      allWeddingsCount = $slidingweddings.length,
-      weddingisFirstLoad;
+      $weddings = $("#weddingsImages"),
+      $weddingsImages = $weddings.find(".imageBox"),
+      $slidingweddings = $( "#weddingsImages .sliderBox" ).find("img");
+
+  var cycleNames = [
+    {"name": $rooms, "modalDiv": '#open-rooms', "Images": $roomsImages, "urls": roomsImgUrls}, 
+    {"name": $restaurants, "modalDiv": '#open-restaurants', "Images": $restaurantsImages, "urls": restaurantsImgUrls }, 
+    {"name": $landscapes, "modalDiv": '#open-landscapes', "Images": $landscapesImages, "urls": landscapesImgUrls }, 
+    {"name": $activities, "modalDiv": '#open-activities', "Images": $activitiesImages, "urls": activitiesImgUrls },
+    {"name": $mogambosprings, "modalDiv": '#open-mogambosprings', "Images": $mogambospringsImages, "urls": mogambospringsImgUrls },
+    {"name": $weddings, "modalDiv": '#open-weddings', "Images": $weddingsImages, "urls": weddingsImgUrls }
+  ]
+
+  for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
+    $(cycleNames[cycleCnt].Images).cycle({
+      autoHeightSpeed: 100,
+      speed: 1000,
+      timeout: 15000,
+      manualSpeed: 1000,
+      fx: "fade",
+      swipe: true,
+      swipefx: "fade",
+      centerHorz: true,
+      centerVert: true,
+      pause: true,
+      allowWrap: false,
+      log: false,
+      progressive: cycleNames[cycleCnt].urls
+    });
+
+    $(cycleNames[cycleCnt].Images).on("cycle-before", function(e, options, outgoing, incoming) {
+        updatePosition();
+    });
+
+    doCycleAfter(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+
+    $(cycleNames[cycleCnt].name).apFullscreenModal({
+      openSelector: cycleNames[cycleCnt].modalDiv,
+    });
+
+    $(cycleNames[cycleCnt].name).find(".btnCaption").on("click", function() {
+        $(".slideCaption").toggle();
+    })
+
+    gotoNext(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+    gotoPrev(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+    doPlayPause(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+
+  }
+
+  function gotoNext(name,images) {
+    $(name).find(".btnNext").on("click", function() {
+      $(images).cycle('next'); 
+    });
+  }
+
+  function gotoPrev(name,images) {
+    $(name).find(".btnPrevious").on("click", function() {
+      $(images).cycle('prev'); 
+    });
+  }
+
+  function doPlayPause(name,images) {
+    $(name).find(".playPause").on("click", function() {
+        if ( $(images).is( '.cycle-paused' ) ) {
+            $(images).cycle('resume');
+            $(images).cycle('next');
+            $(this).text( '||' );
+        } else {
+            $(images).cycle( 'pause' );
+            $(this).text( '>' );
+        }
+    });
+  }
+
+  function doCycleAfter(name,images){
+    $(images).on("cycle-after", function(e, options, outgoing, incoming) {
+      $(name).find("h2").html($(incoming).data("name"));
+      $(name).find("p").html($(incoming).data("description"));
+    });
+  }
+
+  function updatePosition() {
+    var theHeight = $( window ).height();
+    for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
+      $(cycleNames[cycleCnt].Images).css("maxHeight",theHeight);
+      $(cycleNames[cycleCnt].Images).find("img").css("maxHeight",theHeight);
+    }
+  }
+
+  $( window ).resize( function (event) {
+    event.preventDefault();
+    updatePosition();
+  });
+
+  updatePosition();
+
 
   $(".slideCaption").toggle();
 
-  $restaurantsImages.cycle({
-    autoHeightSpeed: 100,
-    speed: 1000,
-    timeout: 6000,
-    manualSpeed: 500,
-    // fx: "scrollHorz",
-    fx: "fade",// 
-    swipe: true,
-    // swipefx: "scrollHorz",
-    swipefx: "fade",
-    centerHorz: true,
-    centerVert: true,
-    //data-cycle-timeout="0"
-    //next: ".photoGallery-next",
-    //prev: ".photoGallery-prev",
-    allowWrap: false,
-    log: false,//, // set to true to display slider console logs
-    progressive: restaurantsImgUrls
-    //pauseOnHover: true
-    //paused: true // while waiting for other images to finish loading then start slide show
-  });
 
-  $landscapesImages.cycle({
-    autoHeightSpeed: 100,
-    speed: 1000,
-    timeout: 6000,
-    manualSpeed: 500,
-    // fx: "scrollHorz",
-    fx: "fade",// 
-    swipe: true,
-    // swipefx: "scrollHorz",
-    swipefx: "fade",
-    centerHorz: true,
-    centerVert: true,
-    //data-cycle-timeout="0"
-    //next: ".photoGallery-next",
-    //prev: ".photoGallery-prev",
-    allowWrap: false,
-    log: false,//, // set to true to display slider console logs
-    progressive: landscapesImgUrls
-    //pauseOnHover: true
-    //paused: true // while waiting for other images to finish loading then start slide show
-  });
-
-  $activitiesImages.cycle({
-    autoHeightSpeed: 100,
-    speed: 1000,
-    timeout: 6000,
-    manualSpeed: 500,
-    // fx: "scrollHorz",
-    fx: "fade",// 
-    swipe: true,
-    // swipefx: "scrollHorz",
-    swipefx: "fade",
-    centerHorz: true,
-    centerVert: true,
-    //data-cycle-timeout="0"
-    //next: ".photoGallery-next",
-    //prev: ".photoGallery-prev",
-    allowWrap: false,
-    log: false,//, // set to true to display slider console logs
-    progressive: activitiesImgUrls
-    //pauseOnHover: true
-    //paused: true // while waiting for other images to finish loading then start slide show
-  });
-
-  $mogambospringsImages.cycle({
-    autoHeightSpeed: 100,
-    speed: 1000,
-    timeout: 6000,
-    manualSpeed: 500,
-    // fx: "scrollHorz",
-    fx: "fade",// 
-    swipe: true,
-    // swipefx: "scrollHorz",
-    swipefx: "fade",
-    centerHorz: true,
-    centerVert: true,
-    //data-cycle-timeout="0"
-    //next: ".photoGallery-next",
-    //prev: ".photoGallery-prev",
-    allowWrap: false,
-    log: false,//, // set to true to display slider console logs
-    progressive: mogambospringsImgUrls
-    //pauseOnHover: true
-    //paused: true // while waiting for other images to finish loading then start slide show
-  });
-
-  $weddingsImages.cycle({
-    autoHeightSpeed: 100,
-    speed: 1000,
-    timeout: 6000,
-    manualSpeed: 500,
-    // fx: "scrollHorz",
-    fx: "fade",// 
-    swipe: true,
-    // swipefx: "scrollHorz",
-    swipefx: "fade",
-    centerHorz: true,
-    centerVert: true,
-    //data-cycle-timeout="0"
-    //next: ".photoGallery-next",
-    //prev: ".photoGallery-prev",
-    allowWrap: false,
-    log: false,//, // set to true to display slider console logs
-    progressive: weddingsImgUrls
-    //pauseOnHover: true
-    //paused: true // while waiting for other images to finish loading then start slide show
-  });
-
-  // function roomImgSlide_onBefore() { 
-  //     // $('#output').html("Scrolling image:<br>" + this.src); 
-  //     console.log("Before");
-  //     $(".slideCaption").hide();
-  // } 
-  // function roomImgSlide_onAfter() { 
-  //     // $('#output').html("Scroll complete for:<br>" + this.src) 
-  //     //     .append('<h3>' + this.alt + '</h3>'); 
-  //     console.log("After");
-  //     $(".slideCaption").show();
-  // }
-
-  $roomsImages.cycle({
-    autoHeightSpeed: 100,
-    speed: 1000,
-    timeout: 15000,
-    manualSpeed: 1000,
-    // fx: "scrollHorz",
-    fx: "fade",// 
-    swipe: true,
-    // swipefx: "scrollHorz",
-    swipefx: "fade",
-    centerHorz: true,
-    centerVert: true,
-    //data-cycle-timeout="0"
-    pause: true,
-    allowWrap: false,
-    log: false,//, // set to true to display slider console logs
-    progressive: roomsImgUrls
-    // before: roomImgSlide_onBefore,
-    // after: roomImgSlide_onAfter
-    //pauseOnHover: true
-    //paused: true // while waiting for other images to finish loading then start slide show
-  });
-
-  // var roomImgCaptionVisible = false;
-  $roomsImages.on("cycle-before", function(e, options, outgoing, incoming) {
-    // var currentImage = $(incoming).attr("name");
-    // $("#imgCaption").find("p").html($(incoming).data("caption"));
-    // $("#roomsImages").find("h2").html($(incoming).data("name"));
-    // $("#roomsImages").find("p").html($(incoming).data("description"));
-    // console.log("Before slide");
-    // $(".slideCaption").hide();
-  });
-
-  $roomsImages.on("cycle-after", function(e, options, outgoing, incoming) {
-    // var currentImage = $(incoming).attr("name");
-    // $("#imgCaption").find("p").html($(incoming).data("caption"));
-    $("#roomsImages").find("h2").html($(incoming).data("name"));
-    $("#roomsImages").find("p").html($(incoming).data("description"));
-    // console.log("After slide");
-    // $(".slideCaption").show();
-  });
-
-  $('#roomsImages').apFullscreenModal({
-    openSelector: '#open-rooms'
-  });
-
-
-  $("#roomsImages .btnCaption").on("click", function() {
-      $(".slideCaption").toggle();
-  })
-
-  $("#roomsImages .btnNext").on("click", function() {
-    $roomsImages.cycle('next'); 
-  });
-
-  $("#roomsImages .btnPrevious").on("click", function() {
-    $roomsImages.cycle('prev'); 
-  });
-
-  // $roomsImages.find("button.playPause").on("click", function() {
-  $("#roomsImages .playPause").on("click", function() {
-      if ( $roomsImages.is( '.cycle-paused' ) ) {
-          $roomsImages.cycle('resume');
-          $roomsImages.cycle('next');
-          $(this).text( '||' );
-      } else {
-          $roomsImages.cycle( 'pause' );
-          $(this).text( '>' );
-      }
-  });
-
-
-	$('#roomsImages').apFullscreenModal({
-	  openSelector: '#open-rooms',
-	  backgroundColor: '#000',
-	});
-
-
-	$('#restaurantsImages').apFullscreenModal({
-	  openSelector: '#open-restaurants'
-	});
-
-	$('#restaurantsImages').apFullscreenModal({
-	  openSelector: '#open-restaurants',
-	  backgroundColor: '#000',
-	});
-
-
-	$('#landscapesImages').apFullscreenModal({
-	  openSelector: '#open-landscapes'
-	});
-
-	$('#landscapesImages').apFullscreenModal({
-	  openSelector: '#open-landscapes',
-	  backgroundColor: '#000',
-	});
-
-	$('#activitiesImages').apFullscreenModal({
-	  openSelector: '#open-activities'
-	});
-
-	$('#activitiesImages').apFullscreenModal({
-	  openSelector: '#open-activities',
-	  backgroundColor: '#000',
-	});
-
-	$('#mogambospringsImages').apFullscreenModal({
-	  openSelector: '#open-mogambosprings'
-	});
-
-	$('#mogambospringImages').apFullscreenModal({
-	  openSelector: '#open-mogambosprings',
-	  backgroundColor: '#000',
-	});
-
-	$('#weddingsImages').apFullscreenModal({
-	  openSelector: '#open-weddings'
-	});
-
-	$('#weddingsImages').apFullscreenModal({
-	  openSelector: '#open-weddings',
-	  backgroundColor: '#000',
-	});
+  // $rooms.apFullscreenModal({
+  //   openSelector: '#open-rooms',
+  //   // backgroundColor: '#000',
+  // });
+  
+  // $roomsImages.cycle({
+  //   autoHeightSpeed: 100,
+  //   speed: 1000,
+  //   timeout: 15000,
+  //   manualSpeed: 1000,
+  //   // fx: "scrollHorz",
+  //   fx: "fade",// 
+  //   swipe: true,
+  //   // swipefx: "scrollHorz",
+  //   swipefx: "fade",
+  //   centerHorz: true,
+  //   centerVert: true,
+  //   //data-cycle-timeout="0"
+  //   pause: true,
+  //   allowWrap: false,
+  //   log: false,//, // set to true to display slider console logs
+  //   progressive: roomsImgUrls
+  //   // before: roomImgSlide_onBefore,
+  //   // after: roomImgSlide_onAfter
+  //   //pauseOnHover: true
+  //   //paused: true // while waiting for other images to finish loading then start slide show
+  // });
 
 });

@@ -1,5 +1,6 @@
 // var roomsImgUrls = [];
 
+
 var roomsImgUrls = [
 		"<img data-name='LAGOON SIDE ROOM' data-description='Preferred by couples and smaller families who want to be close to the lagoon. Our most popular room.' src='./pbayImages/Pictures/rooms/LagoonSideRoom.jpg' />",
 		"<img data-name='LAGOON SIDE ROOM' data-description='Preferred by couples and smaller families who want to be close to the lagoon. Our most popular room.' src='./pbayImages/Pictures/rooms/LagoonSideTerrace.jpg' />",
