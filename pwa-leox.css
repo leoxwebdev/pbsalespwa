@@ -153,8 +153,13 @@ figure img {
 			margin-left: 3px;
 		}
 
+
 		.slideControls .ui-btn {
 			padding: .3em .5em;
 		}
+
+/*		.slideControls button.btnCaption {
+			width: 200px;
+		}*/
 
 

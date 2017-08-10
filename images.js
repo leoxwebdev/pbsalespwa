@@ -35,9 +35,9 @@ $( document ).on( "pagecreate", "#images", function () {
 
   for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
     $(cycleNames[cycleCnt].Images).cycle({
-      autoHeightSpeed: 100,
+      autoHeightSpeed: 1000,
       speed: 1000,
-      timeout: 15000,
+      timeout: 10000,
       manualSpeed: 1000,
       fx: "fade",
       swipe: true,
@@ -46,8 +46,9 @@ $( document ).on( "pagecreate", "#images", function () {
       centerVert: true,
       pause: true,
       allowWrap: false,
-      log: false,
-      progressive: cycleNames[cycleCnt].urls
+      loader: true,
+      progressive: cycleNames[cycleCnt].urls,
+      log: false
     });
 
     $(cycleNames[cycleCnt].Images).on("cycle-before", function(e, options, outgoing, incoming) {
@@ -58,6 +59,7 @@ $( document ).on( "pagecreate", "#images", function () {
 
     $(cycleNames[cycleCnt].name).apFullscreenModal({
       openSelector: cycleNames[cycleCnt].modalDiv,
+      animationDuration: 800
     });
 
     $(cycleNames[cycleCnt].name).find(".btnCaption").on("click", function() {
@@ -68,6 +70,9 @@ $( document ).on( "pagecreate", "#images", function () {
     gotoPrev(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
     doPlayPause(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
 
+    $(cycleNames[cycleCnt].modalDiv).on("click", function() {
+      console.log("hi");
+    });
   }
 
   function gotoNext(name,images) {
