@@ -17,10 +17,13 @@
 }
 
 figure {
+	display: flex;
+  flex-direction: column-reverse;
 	max-width: 100%;
 	margin: 0 auto;
 	min-width: 320px;
-	min-height: 165px;
+	/*min-height: 165px;*/
+	min-height: 220px;
 	flex-basis: 320px;
 	flex-grow: 1;
 	position: relative;
@@ -30,6 +33,7 @@ figure {
   margin-bottom: 3px;
   background-color: rgba(1,75,66,0.3);
   cursor: pointer;
+  /*background: url('./pbayImages/Pictures/landscape/AerialView.jpg') no-repeat;*/
 }
 
 figcaption {
@@ -42,7 +46,7 @@ figcaption {
 	color: #fff;
 	padding: 10px 5px 15px 5px;
 	/*bottom: 5px;*/
-	bottom: 0px;
+	top: 0px;
 	box-sizing: border-box;
 	text-transform: uppercase;
 }
@@ -162,4 +166,94 @@ figure img {
 			width: 200px;
 		}*/
 
+.mainLoader {
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
 
+
+	/*background-color: rgba(0,0,0,0.2);*/
+	display: block;
+	position: absolute;
+	width: 100%;
+	font-size: 23px;
+	text-align: center;
+	color: #fff;
+	padding: 10px 5px 15px 5px;
+	/*bottom: 5px;*/
+	bottom: 0px;
+	box-sizing: border-box;
+	/*text-transform: uppercase;*/
+
+	}
+	.mainLoader p {
+		font-size: 14px;
+		color: #fff;
+		text-shadow: none;
+		text-decoration: none;
+		margin-top: 3px;
+    margin-bottom: 10px;
+	}
+	.mainLoader img {
+		width: 48px;
+		height: 48px;
+	}
+
+.loader {
+  left: 50%;
+  top: 50%;
+  /*position: fixed;*/
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+  .loader #spinner {
+    box-sizing: border-box;
+    stroke: #673AB7;
+    stroke-width: 3px;
+    -webkit-transform-origin: 50%;
+            transform-origin: 50%;
+    -webkit-animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
+            animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite; }
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg); } }
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg); } }
+
+@-webkit-keyframes line {
+  0% {
+    stroke-dasharray: 2, 85.964;
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  50% {
+    stroke-dasharray: 65.973, 21.9911;
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dasharray: 2, 85.964;
+    stroke-dashoffset: -65.973;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg); } }
+
+@keyframes line {
+  0% {
+    stroke-dasharray: 2, 85.964;
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  50% {
+    stroke-dasharray: 65.973, 21.9911;
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dasharray: 2, 85.964;
+    stroke-dashoffset: -65.973;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg); } }            

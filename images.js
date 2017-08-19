@@ -40,6 +40,10 @@ $( document ).on( "pagecreate", "#images", function () {
     {"name": $weddings, "modalDiv": '#open-weddings', "Images": $weddingsImages, "urls": weddingsImgUrls }
   ]
 
+  // $("#open-rooms").on("click", function() {
+  //   startSlideShow(0);
+  // });
+
   function gotoNext(name,images) {
     $(name).find(".btnNext").on("click", function() {
       $(images).cycle('next'); 
@@ -67,8 +71,12 @@ $( document ).on( "pagecreate", "#images", function () {
 
   function doCycleBefore(name,images){
     $(images).on("cycle-before", function(e, options, outgoing, incoming) {
-        console.log("Updating position...cycle-before", images.selector);
-        updatePosition(images);
+        console.log("e = ", e);
+        console.log("options = ", options);
+        console.log("outgoing = ", outgoing);
+        console.log("incoming = ", incoming);
+        // updatePosition(images);
+        // updatePosition();
     });
   }
 
@@ -86,17 +94,26 @@ $( document ).on( "pagecreate", "#images", function () {
       console.log("Pause all slide shows");
       pauseSlideShows();
       console.log("starting slideshow", images.selector);
+      // updatePosition(images);
       $(images).cycle('goto', 0);
-      updatePosition(images);
       $(images).cycle("resume");
+      // updatePosition();
       return false;
     });
   }
 
-  function updatePosition(pSlideName) {
+  // function updatePosition(pSlideName) {
+  function updatePosition() {    
     var theHeight = $( window ).height();
-    $(pSlideName).css("maxHeight",theHeight);
-    $(pSlideName).find("img").css("maxHeight",theHeight);  
+    // $(pSlideName).css("maxHeight",theHeight);
+    // $(pSlideName).find("img").css("maxHeight",theHeight);  
+
+    for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
+      // updatePosition(cycleNames[cycleCnt].Images);
+      // console.log("Updating position...", cycleNames[cycleCnt].Images.selector)
+      $(cycleNames[cycleCnt].Images).css("maxHeight",theHeight);
+      $(cycleNames[cycleCnt].Images).find("img").css("maxHeight",theHeight);  
+    };
   }
 
   function pauseSlideShows() {
@@ -115,13 +132,13 @@ $( document ).on( "pagecreate", "#images", function () {
     };
   }
 
-  for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
-    $(cycleNames[cycleCnt].Images).cycle({
+  function startSlideShow(slideArrayNumber) {
+    $(cycleNames[slideArrayNumber].Images).cycle({
       // pause: true,
       autoHeightSpeed: 1000,
-      speed: 1000,
+      speed: 500,
       timeout: 10000,
-      manualSpeed: 1000,
+      manualSpeed: 500,
       fx: "fade",
       swipe: true,
       swipefx: "fade",
@@ -129,44 +146,89 @@ $( document ).on( "pagecreate", "#images", function () {
       centerVert: true,
       pause: true,
       allowWrap: false,
+      // slide: '> div',
       // loader: true,
-      progressive: cycleNames[cycleCnt].urls,
+      // progressive: cycleNames[slideArrayNumber].urls,
       log: false
     });
 
-    $(cycleNames[cycleCnt].name).apFullscreenModal({
-      openSelector: cycleNames[cycleCnt].modalDiv,
+    $(cycleNames[slideArrayNumber].name).apFullscreenModal({
+      openSelector: cycleNames[slideArrayNumber].modalDiv,
       closeSelector: '.close-modal',
       animationDuration: 800
     });
 
-    // $(cycleNames[cycleCnt].Images).cycle("pause");
+    $(cycleNames[slideArrayNumber].Images).cycle("pause");
 
-    doCycleAfter(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
-    doCycleBefore(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
-    gotoNext(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
-    gotoPrev(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
-    doPlayPause(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
-    doCycleResume(cycleNames[cycleCnt].modalDiv,cycleNames[cycleCnt].Images);
+    doCycleAfter(cycleNames[slideArrayNumber].name,cycleNames[slideArrayNumber].Images);
+    doCycleBefore(cycleNames[slideArrayNumber].name,cycleNames[slideArrayNumber].Images);
+    gotoNext(cycleNames[slideArrayNumber].name,cycleNames[slideArrayNumber].Images);
+    gotoPrev(cycleNames[slideArrayNumber].name,cycleNames[slideArrayNumber].Images);
+    doPlayPause(cycleNames[slideArrayNumber].name,cycleNames[slideArrayNumber].Images);
+    doCycleResume(cycleNames[slideArrayNumber].modalDiv,cycleNames[slideArrayNumber].Images);
 
-    $(cycleNames[cycleCnt].name).find(".btnCaption").on("click", function() {
+    $(cycleNames[slideArrayNumber].name).find(".btnCaption").on("click", function() {
         $(".slideCaption").toggle();
     })
+
+    // updatePosition(cycleNames[cycleCnt].Images);
+    updatePosition();
   }
+
+  // for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
+  //   $(cycleNames[cycleCnt].Images).cycle({
+  //     // pause: true,
+  //     autoHeightSpeed: 1000,
+  //     speed: 1000,
+  //     timeout: 10000,
+  //     manualSpeed: 1000,
+  //     fx: "fade",
+  //     swipe: true,
+  //     swipefx: "fade",
+  //     centerHorz: true,
+  //     centerVert: true,
+  //     pause: true,
+  //     allowWrap: false,
+  //     // slide: '> div',
+  //     // loader: true,
+  //     // progressive: cycleNames[cycleCnt].urls,
+  //     log: false
+  //   });
+
+  //   $(cycleNames[cycleCnt].name).apFullscreenModal({
+  //     openSelector: cycleNames[cycleCnt].modalDiv,
+  //     closeSelector: '.close-modal',
+  //     animationDuration: 800
+  //   });
+
+  //   // $(cycleNames[cycleCnt].Images).cycle("pause");
+
+  //   doCycleAfter(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+  //   doCycleBefore(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+  //   gotoNext(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+  //   gotoPrev(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+  //   doPlayPause(cycleNames[cycleCnt].name,cycleNames[cycleCnt].Images);
+  //   doCycleResume(cycleNames[cycleCnt].modalDiv,cycleNames[cycleCnt].Images);
+
+  //   $(cycleNames[cycleCnt].name).find(".btnCaption").on("click", function() {
+  //       $(".slideCaption").toggle();
+  //   })
+  // }
 
   $( window ).resize( function (event) {
     event.preventDefault();
     // console.log("Updating position...resize");
-    for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
-      updatePosition(cycleNames[cycleCnt].Images);
-    };
+    updatePosition();
+    // for ( var cycleCnt = cycleNames.length - 1; cycleCnt >= 0; cycleCnt-- ) {
+    //   updatePosition(cycleNames[cycleCnt].Images);
+    // };
   });
 
 
   $(".slideCaption").toggle();
 
   $(".apfm-close-button").on("click", function() {
-    startAllSlideShows();
+    // startAllSlideShows();
   });
 
   $(document.documentElement).keyup(function (e) {
@@ -183,7 +245,7 @@ $( document ).on( "pagecreate", "#images", function () {
 
       if (e.keyCode == 27){
           // Temp. solution to continue download of slideshows pics while not shown.
-          startAllSlideShows();
+          // startAllSlideShows();
       }
   });
   
@@ -209,5 +271,56 @@ $( document ).on( "pagecreate", "#images", function () {
   //   //pauseOnHover: true
   //   //paused: true // while waiting for other images to finish loading then start slide show
   // });
+
+
+
+    function preload(arr, imgGroup, imgGroupSlide, groupNumber){
+
+      var loadedCount = 0,
+          imgLen = arr.length,
+          $imgGroupSelector = $("#" + imgGroup);
+
+      $imgGroupSelector.find(".imgAll").html(imgLen);
+
+      function PreloadImage(imgSrc,imgIndex){        
+
+        var objImagePreloader = new Image();
+        objImagePreloader.src = imgSrc;
+
+        if ( objImagePreloader.complete ){
+          loadHandler(objImagePreloader, imgIndex);
+          objImagePreloader.onload=function(){};
+        } else {
+          objImagePreloader.onload = function() {
+            loadHandler(objImagePreloader, imgIndex );
+            //    clear onLoad, IE behaves irratically with animated gifs otherwise
+            objImagePreloader.onload=function(){};
+          }
+        }
+
+        function loadHandler(loadedImg, imgIndex) {
+          loadedCount++
+          $imgGroupSelector.find(".loadedCount").html(loadedCount);
+          // imgGroupSlide.cycle('add',loadedImg);
+          $(loadedImg).appendTo(imgGroupSlide);
+          // console.log(imgGroup , imgIndex," is loaded");
+          if ( loadedCount == imgLen ) {
+            $imgGroupSelector.find(".mainLoader").hide();
+            startSlideShow(groupNumber);
+          }
+        }
+      }
+
+      for ( i = 0; i < arr.length; i++) PreloadImage(arr[i],i); 
+
+    }    
+
+  preload(roomsImgUrls, "open-rooms", $roomsImages,0);
+  preload(restaurantsImgUrls, "open-restaurants", $restaurantsImages,1);
+  preload(landscapesImgUrls, "open-landscapes", $landscapesImages,2);
+  preload(activitiesImgUrls, "open-activities", $activitiesImages,3);
+  preload(mogambospringsImgUrls, "open-mogambosprings", $mogambospringsImages,4);
+  preload(weddingsImgUrls, "open-weddings", $weddingsImages,5);
+
 
 });

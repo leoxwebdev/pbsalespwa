@@ -2,9 +2,9 @@
   'use strict';
 
   var app = {
-    isLoading: true,
-    visibleCards: {},
-    selectedCities: []
+    isLoading: true//,
+    // visibleCards: {},
+    // selectedCities: []
     // spinner: document.querySelector('.loader'),
     // cardTemplate: document.querySelector('.cardTemplate'),
     // container: document.querySelector('.main'),

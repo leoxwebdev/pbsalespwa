@@ -73,7 +73,7 @@ self.addEventListener('fetch', function(e) {
       })
     );
   } else {
-    console.log("else");
+    // console.log("else");
     /*
      * The app is asking for app shell files. In this scenario the app uses the
      * "Cache, falling back to the network" offline strategy:
