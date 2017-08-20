@@ -2,6 +2,16 @@
 
 
 var roomsImgUrls = [
+		"./pbayImages/rooms/1bedroomsuite.jpg",
+		"./pbayImages/rooms/2bedroomsuite.jpg",
+		"./pbayImages/rooms/familyroom.jpg",
+		"./pbayImages/rooms/lagoonside_nile.jpg",
+		"./pbayImages/rooms/lagoonview.jpg",
+		"./pbayImages/rooms/poolsideroom.jpg",
+		"./pbayImages/rooms/quantumvilla.jpg",
+		"./pbayImages/rooms/spaindulgenceroom.jpg",
+		"./pbayImages/rooms/watersedge.jpg",
+		"./pbayImages/rooms/riverboatsuite.jpg",
 		"./pbayImages/Pictures/rooms/LagoonSideRoom.jpg",
 		"./pbayImages/Pictures/rooms/LagoonSideTerrace.jpg",
 		"./pbayImages/Pictures/rooms/LagoonViewRoom.jpg",
